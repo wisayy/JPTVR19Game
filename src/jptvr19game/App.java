@@ -18,15 +18,32 @@ public class App {
         System.out.println("Привет.");
         System.out.println("Программа загадала число, угадай:");
         Random random = new Random();
-        int myNumber = random.nextInt(5 - 0 + 1)+0;
+        int attempt = 0;
         Scanner scanner = new Scanner(System.in);
-        int gamerNumber = scanner.nextInt();
-        if(myNumber == gamerNumber){
-            System.out.println("Ты выиграл!");
-        }else{
-            System.out.println("Ты проиграл! Было задумано: "
-                + myNumber);
-        }
+        System.out.println("Введите максимальное число: ");
+        int max = scanner.nextInt();
+        System.out.println("Введите минимальное число: ");
+        int min = scanner.nextInt();
+        System.out.println("Введите числo: ");
+        
+        
+        do {     
+            int myNumber = random.nextInt(max - min+1)+min;
+            int gamerNumber = scanner.nextInt();
+            if(myNumber == gamerNumber){
+                System.out.println("Ты выиграл!");
+                break;
+            }else{
+                if(attempt > 1){
+                    System.out.println("Ты проиграл! Было задумано: "
+                        + myNumber);
+                    break;
+                }else{
+                    System.out.println("Попробуй еще раз: ");
+                    
+                }
+                attempt++;
+            }
+        } while (true);
     }
-    
 }
